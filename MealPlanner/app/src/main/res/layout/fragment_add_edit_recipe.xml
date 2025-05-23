@@ -4,18 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp">
+    android:background="@color/background_light"
+    android:fillViewport="true">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/text_title_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Add New Recipe"
-            android:textSize="24sp"
+            android:textColor="@color/primary"
+            android:textSize="28sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -27,6 +30,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:hint="Recipe Title"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_recipe_placeholder"
+            app:startIconTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/text_title_header">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -41,8 +48,10 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Description (Optional)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/input_layout_title">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,8 +67,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Ingredients (one per line)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_grocery"
+            app:startIconTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/input_layout_description">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -76,8 +89,12 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:hint="Instructions (steps)"
+            app:boxStrokeColor="@color/primary"
+            app:hintTextColor="@color/primary"
+            app:startIconDrawable="@drawable/ic_time"
+            app:startIconTint="@color/primary"
             app:layout_constraintTop_toBottomOf="@id/input_layout_ingredients">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -203,13 +220,20 @@
                 android:inputType="none" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button_save_recipe"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:padding="12dp"
             android:text="Save Recipe"
-            app:layout_constraintTop_toBottomOf="@id/input_layout_difficulty" />
+            android:textColor="@color/white"
+            android:backgroundTint="@color/primary"
+            app:cornerRadius="12dp"
+            app:rippleColor="@color/primary_light"
+            app:layout_constraintTop_toBottomOf="@id/input_layout_difficulty"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

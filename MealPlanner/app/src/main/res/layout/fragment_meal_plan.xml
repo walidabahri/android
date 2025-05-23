@@ -14,8 +14,10 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
+            android:background="@color/primary"
             app:title="Meal Planner"
-            app:titleTextColor="@android:color/white" />
+            app:titleTextAppearance="@style/TextAppearance.App.TitleMedium"
+            app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -42,9 +44,10 @@
                     android:id="@+id/buttonPreviousWeek"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/circle_white_background"
                     android:contentDescription="Previous Week"
-                    android:src="@drawable/ic_arrow_left" />
+                    android:src="@drawable/ic_arrow_left"
+                    app:tint="@color/primary" />
 
                 <TextView
                     android:id="@+id/textViewCurrentWeek"
@@ -52,6 +55,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
+                    android:textColor="@color/text_primary"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     tools:text="May 23 - May 29, 2025" />
@@ -60,9 +64,10 @@
                     android:id="@+id/buttonNextWeek"
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:background="@drawable/circle_white_background"
                     android:contentDescription="Next Week"
-                    android:src="@drawable/ic_arrow_right" />
+                    android:src="@drawable/ic_arrow_right"
+                    app:tint="@color/primary" />
 
             </LinearLayout>
 
@@ -72,9 +77,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
+                android:background="@color/white"
                 app:tabMode="scrollable"
                 app:tabGravity="fill"
-                app:tabSelectedTextColor="?attr/colorPrimary" />
+                app:tabIndicatorColor="@color/accent"
+                app:tabIndicatorHeight="3dp"
+                app:tabTextColor="@color/text_secondary"
+                app:tabSelectedTextColor="@color/accent"
+                app:tabRippleColor="@color/accent_light" />
 
             <!-- Meal Slots -->
             <androidx.cardview.widget.CardView
@@ -100,8 +110,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Breakfast"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/breakfast"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:drawableStart="@drawable/ic_breakfast"
+                            android:drawablePadding="8dp"
+                            app:drawableTint="@color/breakfast" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewBreakfast"
@@ -116,6 +130,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="+ Add breakfast"
+                            android:textColor="@color/breakfast"
+                            app:rippleColor="@color/breakfast_light"
                             android:textAllCaps="false" />
 
                     </LinearLayout>
@@ -132,12 +148,15 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lunch"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/lunch"
+                            android:backgroundTint="@color/lunch_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp"
+                            android:layout_marginBottom="8dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewLunch"
@@ -146,13 +165,15 @@
                             android:nestedScrollingEnabled="false"
                             android:minHeight="48dp" />
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/buttonAddLunch"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="+ Add lunch"
-                            android:textAllCaps="false" />
+                            android:textColor="@color/lunch"
+                            android:backgroundTint="@color/lunch_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp" />
 
                     </LinearLayout>
 
@@ -168,12 +189,15 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Dinner"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/dinner"
+                            android:backgroundTint="@color/dinner_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp"
+                            android:layout_marginBottom="8dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewDinner"
@@ -182,13 +206,15 @@
                             android:nestedScrollingEnabled="false"
                             android:minHeight="48dp" />
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/buttonAddDinner"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="+ Add dinner"
-                            android:textAllCaps="false" />
+                            android:textColor="@color/dinner"
+                            android:backgroundTint="@color/dinner_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp" />
 
                     </LinearLayout>
 
@@ -204,12 +230,15 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView
+                        <com.google.android.material.button.MaterialButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Snacks"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/snack"
+                            android:backgroundTint="@color/snack_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp"
+                            android:layout_marginBottom="8dp" />
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerViewSnacks"
@@ -218,27 +247,30 @@
                             android:nestedScrollingEnabled="false"
                             android:minHeight="48dp" />
 
-                        <Button
+                        <com.google.android.material.button.MaterialButton
                             android:id="@+id/buttonAddSnack"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="+ Add snack"
-                            android:textAllCaps="false" />
+                            android:textColor="@color/snack"
+                            android:backgroundTint="@color/snack_light"
+                            app:cornerRadius="12dp"
+                            android:padding="12dp" />
 
                     </LinearLayout>
 
                 </LinearLayout>
-
             </androidx.cardview.widget.CardView>
 
             <!-- Daily Nutrition Summary -->
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="4dp">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="@color/primary_light"
+                app:strokeWidth="1dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -383,7 +415,7 @@
 
                 </LinearLayout>
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
 
