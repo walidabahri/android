@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.walid.abahri.mealplanner.DB.AppDatabase
 import com.walid.abahri.mealplanner.DB.GroceryItem
@@ -36,7 +37,7 @@ class MealPlanViewModel(application: Application) : AndroidViewModel(application
     }
     
     // Get recipe by ID (used to display recipe details in meal plan)
-    fun getRecipeById(recipeId: Int) = recipeRepository.getRecipeById(recipeId)
+    fun getRecipeById(recipeId: Int) = recipeRepository.getRecipeById(recipeId).asLiveData()
 
     // Add a meal plan
     fun addMealPlan(plan: MealPlan) {

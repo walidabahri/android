@@ -385,6 +385,7 @@ class MealPlanFragment : Fragment() {
         inner class MealViewHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
             val titleTextView = itemView.findViewById<TextView>(R.id.text_meal_recipe_title)
             val servingsTextView = itemView.findViewById<TextView>(R.id.text_meal_servings)
+            val deleteButton = itemView.findViewById<View?>(R.id.button_delete_meal)
 
             init {
                 itemView.setOnClickListener {
@@ -403,10 +404,22 @@ class MealPlanFragment : Fragment() {
 
         override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
             val meal = mealPlans[position]
-            // Here you would normally load the recipe title
-            // For now, just show the recipe ID
-            holder.titleTextView.text = "Recipe #${meal.recipeId}"
+            
+            // Load the recipe title from the database
+            mealPlanViewModel.getRecipeById(meal.recipeId).observe(viewLifecycleOwner) { recipe ->
+                if (recipe != null) {
+                    holder.titleTextView.text = recipe.title
+                } else {
+                    holder.titleTextView.text = "Recipe #${meal.recipeId}"
+                }
+            }
+            
             holder.servingsTextView.text = "${meal.servings} serving(s)"
+            
+            // Add delete button click listener
+            holder.deleteButton?.setOnClickListener {
+                showDeleteConfirmationDialog(meal)
+            }
         }
 
         override fun getItemCount() = mealPlans.size
